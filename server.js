@@ -19,6 +19,9 @@ const app = express();
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 
+// Point static path to dist
+app.use(express.static(path.join(__dirname, 'dist')));
+
 // mongo stuff
 var db;
 
@@ -35,8 +38,6 @@ mongodb.MongoClient.connect(process.env.MONGODB_URI, function (err, database) {
 
 });
 
-// Point static path to dist
-app.use(express.static(path.join(__dirname, 'dist')));
 
 // Set our api routes
 app.use('/api', api);
