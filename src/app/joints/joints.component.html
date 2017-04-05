@@ -1,3 +1,7 @@
-<p>
-  joints works!
-</p>
+<button (click)="showLog()"></button>
+
+<div class="" *ngFor="let joint of joints">
+  <p>
+    {{joint.name}}
+  </p>
+</div>

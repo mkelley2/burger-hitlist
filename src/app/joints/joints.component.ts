@@ -12,7 +12,14 @@ export class JointsComponent implements OnInit {
   constructor(private jointsService: JointsService) { }
 
   ngOnInit() {
-    this.jointsService.getAllJoints(97225).subscribe(res => {this.joints = res})
+
+  }
+
+  showLog(){
+    this.jointsService.getAllJoints(97225).subscribe(res => {
+      this.joints = res;
+      console.log(res)
+    })
   }
 
 }

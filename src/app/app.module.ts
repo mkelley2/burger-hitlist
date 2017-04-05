@@ -8,12 +8,7 @@ import { JointsComponent } from './joints/joints.component';
 import { AppRoutingModule }     from './app-routing.module';
 import { WelcomeComponent } from './welcome/welcome.component';
 import { JointsService} from './joints.service';
-// import { masterYelpKeys } from './secret';
-//
-// export const masterYelpKeys = {
-//   clientId: masterYelpKeys.clientId,
-//   clientSecret: masterYelpKeys.clientSecret
-// };
+
 
 @NgModule({
   declarations: [

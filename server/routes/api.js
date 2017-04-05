@@ -1,7 +1,6 @@
 const express = require('express');
 const router = express.Router();
 var keys = require('./../../secret.json')
-console.log(keys);
 'use strict';
 
 const yelp = require('yelp-fusion');
@@ -14,7 +13,8 @@ router.get('/:zip', (req, res) => {
     const client = yelp.client(response.jsonBody.access_token);
 
     client.search({
-      location: req.params.zip
+      location: req.params.zip,
+      categories: "burgers"
     }).then(response => {
     res.send(response.jsonBody.businesses);
     });
