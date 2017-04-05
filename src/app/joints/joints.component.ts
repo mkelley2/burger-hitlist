@@ -16,7 +16,7 @@ export class JointsComponent implements OnInit {
   }
 
   showLog(){
-    this.jointsService.getAllJoints(97225).subscribe(res => {
+    this.jointsService.getAllJoints(97204).subscribe(res => {
       this.joints = res;
       console.log(res)
     })
