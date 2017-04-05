@@ -3,11 +3,11 @@ const express = require('express');
 const path = require('path');
 const http = require('http');
 const bodyParser = require('body-parser');
-var mongodb = require("mongodb");
-var ObjectID = mongodb.ObjectID;
+// var mongodb = require("mongodb");
+// var ObjectID = mongodb.ObjectID;
 
 
-var USERS_COLLECTION = "users";
+// var USERS_COLLECTION = "users";
 
 // Get our API routes
 const api = require('./server/routes/api');
@@ -26,17 +26,17 @@ app.use(express.static(path.join(__dirname, 'dist')));
 var db;
 
 // Connect to the database before starting the application server.
-mongodb.MongoClient.connect(process.env.MONGODB_URI, function (err, database) {
-  if (err) {
-    console.log(err);
-    process.exit(1);
-  }
-
-  // Save database object from the callback for reuse.
-  db = database;
-  console.log("Database connection ready");
-
-});
+// mongodb.MongoClient.connect(process.env.MONGODB_URI, function (err, database) {
+//   if (err) {
+//     console.log(err);
+//     process.exit(1);
+//   }
+//
+//   // Save database object from the callback for reuse.
+//   db = database;
+//   console.log("Database connection ready");
+//
+// });
 
 
 // Set our api routes
