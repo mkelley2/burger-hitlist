@@ -1,7 +1,33 @@
 <button (click)="showLog()"></button>
 
 <div class="" *ngFor="let joint of joints">
-  <p>
-    {{joint.name}}
-  </p>
+  <div class="well">
+    <h2>{{joint.name}}</h2>
+    <h3>Rating: {{joint.rating}}</h3>
+    <h3>Review Count: {{joint.review_count}}</h3>
+    <h4>Location: {{joint.location.display_address[0]}},  {{joint.location.display_address[1]}}</h4>
+  </div>
+</div>
+
+<div>
+  <h2>{{(selectedUser | async)?.username}}</h2>
+  <h3>Favorite Burger Joints</h3>
+  <ul>
+    <li *ngFor="let favorite of (selectedUser | async)?.favorites">
+      {{favorite}}
+    </li>
+  </ul>
+  <h3>Visited Burger Joints</h3>
+  <ul>
+    <li *ngFor="let visit of (selectedUser | async)?.visited">
+      {{visit}}
+    </li>
+  </ul>
+  <h3>WishList Burger Joints</h3>
+  <ul>
+    <li *ngFor="let wish of (selectedUser | async)?.wishlist">
+      {{wish}}
+    </li>
+  </ul>
+
 </div>

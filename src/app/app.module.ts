@@ -11,6 +11,8 @@ import { JointsService} from './joints.service';
 import { AuthService } from './providers/auth.service';
 import { AngularFireModule} from 'angularfire2';
 import { masterFirebaseConfig } from './api-keys';
+import { UserService } from './user.service';
+
 
 export const firebaseConfig = {
   apiKey: masterFirebaseConfig.apiKey,
@@ -34,7 +36,7 @@ export const firebaseConfig = {
     AppRoutingModule,
     AngularFireModule.initializeApp(firebaseConfig)
   ],
-  providers: [JointsService, AuthService],
+  providers: [JointsService, AuthService, UserService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
