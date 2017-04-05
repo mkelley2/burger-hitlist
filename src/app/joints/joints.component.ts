@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { JointsService} from './../joints.service';
 
 @Component({
   selector: 'app-joints',
@@ -6,10 +7,12 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./joints.component.css']
 })
 export class JointsComponent implements OnInit {
+  joints: any = [];
 
-  constructor() { }
+  constructor(private jointsService: JointsService) { }
 
   ngOnInit() {
+    this.jointsService.getAllJoints(97225).subscribe(res => {this.joints = res})
   }
 
 }
