@@ -16,7 +16,7 @@ export class JointsComponent implements OnInit {
   constructor(private jointsService: JointsService, private userService: UserService) { }
 
   ngOnInit() {
-    this.selectedUser = this.userService.getUserById("0");
+    this.userService.getUserById("0").subscribe(res => {this.selectedUser = res;});
   }
 
   showLog(){
@@ -24,6 +24,30 @@ export class JointsComponent implements OnInit {
       this.joints = res;
       console.log(res)
     })
+  }
+
+  checkUser(joint){
+    // console.log(this.selectedUser)
+    if(this.selectedUser.favorites.indexOf(joint.id)>=0){
+      return "bg-success";
+    }else if(this.selectedUser.visited.indexOf(joint.id)>=0){
+      return "bg-warning";
+    }else if(this.selectedUser.wishlist.indexOf(joint.id)>=0){
+      return "bg-info";
+    }
+  }
+
+  addVisit(joint){
+    this.selectedUser.visited.push(joint.id);
+    this.userService.updateUser(this.selectedUser);
+  }
+  addFavorite(joint){
+    this.selectedUser.favorites.push(joint.id);
+    this.userService.updateUser(this.selectedUser);
+  }
+  addWish(joint){
+    this.selectedUser.wishlist.push(joint.id);
+    this.userService.updateUser(this.selectedUser);
   }
 
 

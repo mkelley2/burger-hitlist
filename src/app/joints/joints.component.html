@@ -1,31 +1,35 @@
 <button (click)="showLog()"></button>
 
-<div class="" *ngFor="let joint of joints">
-  <div class="well">
+<div class="well" *ngFor="let joint of joints">
+  <div [class]="checkUser(joint)">
     <h2>{{joint.name}}</h2>
     <h3>Rating: {{joint.rating}}</h3>
     <h3>Review Count: {{joint.review_count}}</h3>
     <h4>Location: {{joint.location.display_address[0]}},  {{joint.location.display_address[1]}}</h4>
+    <button (click)="addVisit(joint)">Visited</button>
+    <button (click)="addFavorite(joint)">Favorite</button>
+    <button (click)="addWish(joint)">Add to Wishlist</button>
+
   </div>
 </div>
 
 <div>
-  <h2>{{(selectedUser | async)?.username}}</h2>
+  <h2>{{(selectedUser)?.username}}</h2>
   <h3>Favorite Burger Joints</h3>
   <ul>
-    <li *ngFor="let favorite of (selectedUser | async)?.favorites">
+    <li *ngFor="let favorite of (selectedUser)?.favorites">
       {{favorite}}
     </li>
   </ul>
   <h3>Visited Burger Joints</h3>
   <ul>
-    <li *ngFor="let visit of (selectedUser | async)?.visited">
+    <li *ngFor="let visit of (selectedUser)?.visited">
       {{visit}}
     </li>
   </ul>
   <h3>WishList Burger Joints</h3>
   <ul>
-    <li *ngFor="let wish of (selectedUser | async)?.wishlist">
+    <li *ngFor="let wish of (selectedUser)?.wishlist">
       {{wish}}
     </li>
   </ul>
