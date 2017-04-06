@@ -1,5 +1,16 @@
-<button (click)="showLog()">log1</button>
-<button (click)="showLog2()">log2</button>
+<p>
+  Select a zipcode:
+</p>
+<select (change)="showJoints($event.target.value, false)">
+  <option *ngFor="let zip of (selectedUser)?.zipcodes" [ngValue]="zip">
+    {{zip}}
+  </option>
+</select>
+<p>
+  or add a Zipcode:
+</p>
+<input #zipcode>
+<button (click)="showJoints(zipcode.value, true)">Find Joints</button>
 
 <div class="well" *ngFor="let joint of joints">
   <div [class]="checkUser(joint)">

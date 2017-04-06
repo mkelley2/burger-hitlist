@@ -20,8 +20,6 @@ export class JointsComponent implements OnInit {
       (auth) => {
           this.selectedUser = auth.google.email;
           console.log("Logged in");
-
-          console.log(this.selectedUser);
           // this.userEmail = this.userService.getUserByUsername(this.selectedUser);
           var user;
           this.userService.getUserByUsername(this.selectedUser).subscribe(res=>{user = res
@@ -35,20 +33,14 @@ export class JointsComponent implements OnInit {
   ngOnInit() {
   }
 
-  showLog(){
-    this.jointsService.getAllJoints(97204).subscribe(res => {
+  showJoints(zip, save){
+    this.jointsService.getAllJoints(zip).subscribe(res => {
       this.joints = res;
-      console.log(res)
     });
-  }
-
-  showLog2(){
-    console.log(this.selectedUser);
-    var george = this.userService.getUserByUsername(this.selectedUser);
-    // console.log(george);
-    george.subscribe(res=>{console.log(res)})
-    // console.log(this.userEmail = this.userService.getUserByUsername(this.selectedUser));
-
+    if(save){
+      this.selectedUser.zipcodes.push(zip);
+      this.userService.updateUser(this.selectedUser);
+    }
   }
 
   checkUser(joint){
