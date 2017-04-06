@@ -28,26 +28,36 @@ export class JointsComponent implements OnInit {
 
   checkUser(joint){
     // console.log(this.selectedUser)
-    if(this.selectedUser.favorites.indexOf(joint.id)>=0){
-      return "bg-success";
-    }else if(this.selectedUser.visited.indexOf(joint.id)>=0){
-      return "bg-warning";
-    }else if(this.selectedUser.wishlist.indexOf(joint.id)>=0){
-      return "bg-info";
-    }
+      if(this.selectedUser.favorites && this.selectedUser.favorites.indexOf(joint.id)>=0){
+        return "bg-success";
+      }else if(this.selectedUser.visited && this.selectedUser.visited.indexOf(joint.id)>=0){
+        return "bg-warning";
+      }else if(this.selectedUser.wishlist && this.selectedUser.wishlist.indexOf(joint.id)>=0){
+        return "bg-info";
+      }
   }
 
   addVisit(joint){
-    this.selectedUser.visited.push(joint.id);
-    this.userService.updateUser(this.selectedUser);
+    if(this.selectedUser.visited.indexOf(joint.id)==-1){
+      if(this.selectedUser.wishlist.indexOf(joint.id)>=0){
+        var pos = this.selectedUser.wishlist.indexOf(joint.id);
+        this.selectedUser.wishlist.splice(pos,1);
+      }
+      this.selectedUser.visited.push(joint.id);
+      this.userService.updateUser(this.selectedUser);
+    }
   }
   addFavorite(joint){
-    this.selectedUser.favorites.push(joint.id);
-    this.userService.updateUser(this.selectedUser);
+    if(this.selectedUser.favorites.indexOf(joint.id)==-1){
+      this.selectedUser.favorites.push(joint.id);
+      this.userService.updateUser(this.selectedUser);
+    }
   }
   addWish(joint){
-    this.selectedUser.wishlist.push(joint.id);
-    this.userService.updateUser(this.selectedUser);
+    if(this.selectedUser.wishlist.indexOf(joint.id)==-1){
+      this.selectedUser.wishlist.push(joint.id);
+      this.userService.updateUser(this.selectedUser);
+    }
   }
 
 

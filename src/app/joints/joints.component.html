@@ -17,21 +17,27 @@
   <h2>{{(selectedUser)?.username}}</h2>
   <h3>Favorite Burger Joints</h3>
   <ul>
-    <li *ngFor="let favorite of (selectedUser)?.favorites">
-      {{favorite}}
-    </li>
+    <span *ngFor="let favorite of (selectedUser)?.favorites">
+      <li  *ngIf="favorite!== ''">
+        {{favorite}}
+      </li>
+    </span>
   </ul>
   <h3>Visited Burger Joints</h3>
   <ul>
-    <li *ngFor="let visit of (selectedUser)?.visited">
-      {{visit}}
-    </li>
+    <span *ngFor="let visit of (selectedUser)?.visited">
+      <li  *ngIf="visit!== ''">
+        {{visit}}
+      </li>
+    </span>
   </ul>
   <h3>WishList Burger Joints</h3>
   <ul>
-    <li *ngFor="let wish of (selectedUser)?.wishlist">
-      {{wish}}
-    </li>
+    <span *ngFor="let wish of (selectedUser)?.wishlist">
+      <li  *ngIf="wish!== ''">
+        {{wish}}
+      </li>
+    </span>
   </ul>
 
 </div>
