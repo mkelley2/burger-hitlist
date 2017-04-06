@@ -24,8 +24,14 @@ export class UserService {
 
   addUser(email): void {
     // this.users[uid] = newUser;
-    console.log("addUser ran")
-    console.log(email)
+    console.log("addUser ran");
+    this.users.push({
+      "username":email,
+      "visited":[""],
+      "favorites":[""],
+      "wishlist":[""],
+      "zipcodes":[""]
+    })
 
 
   }
@@ -34,8 +40,15 @@ export class UserService {
     return this.angularFire.database.object('/users/' + userId);
   }
 
-  getUserByUsername(username: string) {
-    return this.angularFire.database.object('/users/username/' + username);
+  getUserByUsername(user: string) {
+    console.log(user)
+    return this.angularFire.database.list('/users/',{
+      query:{
+        orderByChild:'username',
+        equalTo: user
+      }
+    })
+
   }
 
   updateUser(userToEdit) {

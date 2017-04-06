@@ -11,24 +11,31 @@ import { UserService } from './../user.service';
   styleUrls: ['./login-page.component.css']
 })
 export class LoginPageComponent implements OnInit {
+  userEmail;
   constructor(public authService: AuthService, public userService: UserService, private router:Router) { }
 
   ngOnInit() {
   }
 
   login() {
+    var foundUser = false;
     this.authService.loginWithGoogle().then((data) => {
       console.log(data);
       this.userService.getUsers().subscribe(res=> {
-        var foundUser = false;
-        res.forEach(elem=>{
-          if (data.auth.email === elem.email) {
+        var len = res.length
+        for(var i = 0;i<len;i++){
+
+          if (data.auth.email === res[i].email) {
+            this.userEmail = data.auth.email;
             foundUser = true;
-            console.log("foundUser");
+            console.log("found User");
           }
-        })
-        if (!foundUser){
-          this.userService.addUser(data.auth.email);
+          if(!foundUser){
+            console.log("if passed");
+            this.userService.addUser(data.auth.email);
+            this.userEmail = data.auth.email;
+            foundUser = true;
+          }
         }
       })
       this.router.navigate(['']);

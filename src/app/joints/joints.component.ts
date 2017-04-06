@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AuthService } from '../providers/auth.service';
 import { JointsService} from './../joints.service';
 import { UserService } from './../user.service';
 import { User } from './../user.model';
@@ -13,17 +14,41 @@ export class JointsComponent implements OnInit {
   joints: any = [];
   selectedUser;
 
-  constructor(private jointsService: JointsService, private userService: UserService) { }
+  constructor(public authService: AuthService, private jointsService: JointsService, private userService: UserService) {
+
+    this.authService.af.auth.subscribe(
+      (auth) => {
+          this.selectedUser = auth.google.email;
+          console.log("Logged in");
+
+          console.log(this.selectedUser);
+          // this.userEmail = this.userService.getUserByUsername(this.selectedUser);
+          var user;
+          this.userService.getUserByUsername(this.selectedUser).subscribe(res=>{user = res
+          console.log(user)
+          this.userService.getUserById(user[0].$key).subscribe(res => {this.selectedUser = res;});
+        })
+        }
+    );
+  }
 
   ngOnInit() {
-    this.userService.getUserById("0").subscribe(res => {this.selectedUser = res;});
   }
 
   showLog(){
     this.jointsService.getAllJoints(97204).subscribe(res => {
       this.joints = res;
       console.log(res)
-    })
+    });
+  }
+
+  showLog2(){
+    console.log(this.selectedUser);
+    var george = this.userService.getUserByUsername(this.selectedUser);
+    // console.log(george);
+    george.subscribe(res=>{console.log(res)})
+    // console.log(this.userEmail = this.userService.getUserByUsername(this.selectedUser));
+
   }
 
   checkUser(joint){
