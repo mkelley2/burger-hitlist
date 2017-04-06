@@ -26,34 +26,7 @@ export class AppComponent {
           this.user_email = '';
           this.router.navigate(['login']);
         } else {
-          // console.log(auth.google);
-          this.userService.getUsers().subscribe(res=>{});
-            // var foundUser = false;
-            // var userKeys = Object.keys(res);
-            // console.log(res);
-          //   for(var i = 0; i<res.length;i++){
-          //     console.log(res[i].$key);
-          //     if (res[i].$key == auth.google.uid) {
-          //       foundUser = true;
-          //       break;
-          //     }
-          //   }
-          //   if(foundUser){
-          //     console.log("found key");
-          //     this.user_ID = auth.google.uid;
-          //   }else{
-          //     console.log("register");
-          //     var newUser = {
-          //       "username":auth.google.email,
-          //       "favorites": [""],
-          //       "visited": [""],
-          //       "wishlist": [""],
-          //       "zipcodes": [""]
-          //     }
-          //     console.log("sim new User")
-          //   }
-          // })
-          this.userService.addUser();
+          console.log(auth.google)
           this.isLoggedIn = true;
           this.user_displayName = auth.google.displayName;
           this.user_email = auth.google.email;

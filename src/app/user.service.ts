@@ -22,10 +22,10 @@ export class UserService {
     userEntryInDatabase.remove();
   }
 
-  addUser(): void {
+  addUser(email): void {
     // this.users[uid] = newUser;
     console.log("addUser ran")
-    console.log(this.users)
+    console.log(email)
 
 
   }
