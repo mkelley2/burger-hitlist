@@ -10,16 +10,16 @@ import { LoginPageComponent } from './login-page/login-page.component';
 import { JointsService} from './joints.service';
 import { AuthService } from './providers/auth.service';
 import { AngularFireModule} from 'angularfire2';
-import { masterFirebaseConfig } from './api-keys';
+// import { masterFirebaseConfig } from './api-keys';
 import { UserService } from './user.service';
 
 
 export const firebaseConfig = {
-  apiKey: masterFirebaseConfig.apiKey,
-  authDomain: masterFirebaseConfig.authDomain,
-  databaseURL: masterFirebaseConfig.databaseURL,
-  storageBucket: masterFirebaseConfig.storageBucket,
-  messagingSenderId: masterFirebaseConfig.messagingSenderId
+  apiKey: "AIzaSyBX7BnU5CsqpdY36_YI9ECOM_wnTMfg9Q8",
+  authDomain: "burgertracker-16841.firebaseapp.com",
+  databaseURL: "https://burgertracker-16841.firebaseio.com",
+  storageBucket: "burgertracker-16841.appspot.com",
+  messagingSenderId: "1005283058376"
 };
 
 @NgModule({

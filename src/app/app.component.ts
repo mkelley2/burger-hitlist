@@ -17,7 +17,6 @@ export class AppComponent {
   private auth: any;
 
   constructor(public userService: UserService, public authService: AuthService, private router: Router) {
-    console.log(process.env);
     this.authService.af.auth.subscribe(
       (auth) => {
         if (auth == null) {
