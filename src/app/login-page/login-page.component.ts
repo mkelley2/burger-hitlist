@@ -25,17 +25,17 @@ export class LoginPageComponent implements OnInit {
         var len = res.length
         for(var i = 0;i<len;i++){
 
-          if (data.auth.email === res[i].email) {
+          if (data.auth.email === res[i].username) {
             this.userEmail = data.auth.email;
             foundUser = true;
             console.log("found User");
           }
-          if(!foundUser){
-            console.log("if passed");
-            this.userService.addUser(data.auth.email);
-            this.userEmail = data.auth.email;
-            foundUser = true;
-          }
+        }
+        if(!foundUser){
+          console.log("if passed");
+          this.userService.addUser(data.auth.email);
+          this.userEmail = data.auth.email;
+          foundUser = true;
         }
       })
       this.router.navigate(['']);
