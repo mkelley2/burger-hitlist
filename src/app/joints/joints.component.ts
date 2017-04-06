@@ -16,7 +16,7 @@ export class JointsComponent implements OnInit {
   constructor(private jointsService: JointsService, private userService: UserService) { }
 
   ngOnInit() {
-    this.userService.getUserById("0").subscribe(res => {this.selectedUser = res;});
+    this.userService.getUserById("104173620988963071538").subscribe(res => {this.selectedUser = res;});
   }
 
   showLog(){

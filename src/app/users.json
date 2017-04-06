@@ -1,9 +1,11 @@
 { "users":
   [{
+    "uid": "104173620988963071538",
     "username": "mkelley1412@gmail.com",
-    "favorites": ["","brunch-box-portland-3", "byh-burgers-portland", "steaks-fifth-avenue-portland-2"],
-    "wishlist": ["","rock-and-roll-chili-pit-portland"],
-    "visited": ["","stumptown-sliders-portland", "the-independent-sports-bar-and-grill-portland"],
+    "favorites": ["brunch-box-portland-3", "byh-burgers-portland", "steaks-fifth-avenue-portland-2"],
+    "wishlist": ["rock-and-roll-chili-pit-portland"],
+    "visited": ["stumptown-sliders-portland", "the-independent-sports-bar-and-grill-portland"],
     "zipcodes": ["97204", "97215", "97225"]
+
   }]
 }

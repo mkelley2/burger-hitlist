@@ -22,8 +22,12 @@ export class UserService {
     userEntryInDatabase.remove();
   }
 
-  addUser(newUser: User): void {
-    this.users.push(newUser);
+  addUser(): void {
+    // this.users[uid] = newUser;
+    console.log("addUser ran")
+    console.log(this.users)
+
+
   }
 
   getUserById(userId: string) {
